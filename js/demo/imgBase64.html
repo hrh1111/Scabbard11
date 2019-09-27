@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Base64图片</title>
+    <script type="text/javascript" src="../../client/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div class="form-group">
+	    <label for="exampleInputFile">请上传人物图片</label>
+	    <input type="file" id="myfile" name="myfile">
+	    <img class="image_thumb" src=""/>
+	</div>
+</body>
+<script type="text/javascript">
+	$("#myfile").change(function(){
+        var imginfo = $(this).get(0).files[0];
+        var fr = new FileReader();
+        fr.readAsDataURL(imginfo); 
+        fr.onload = function(){
+            pic = this.result; 
+            pic_nohead = pic.substr(pic.indexOf(',')+1); 
+            $(".image_thumb").attr("src",pic);
+        }
+    })
+</script>
+</html>
